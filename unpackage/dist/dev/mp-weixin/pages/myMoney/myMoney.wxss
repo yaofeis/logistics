@@ -1,0 +1,75 @@
+@charset "UTF-8";
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 文字尺寸 */
+#my_money {
+  font-size: 28rpx;
+  color: #333;
+}
+#my_money .top {
+    background: #454454;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding: 20rpx 40rpx;
+}
+#my_money .top > view:nth-of-type(1) > text {
+      color: white;
+}
+#my_money .top > view:nth-of-type(1) > view {
+      color: #FA893B;
+}
+#my_money .top > view:nth-of-type(1) > view > text {
+        font-size: 40rpx;
+}
+#my_money .top > view:nth-of-type(2) {
+      background: white;
+      padding: 10rpx 30rpx;
+      -webkit-border-radius: 5px;
+              border-radius: 5px;
+}
+#my_money .list {
+    padding: 0 40rpx;
+}
+#my_money .list > view {
+      border-bottom: 1px solid #E1E1E1;
+      padding: 10rpx 0;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: justify;
+      -webkit-justify-content: space-between;
+          -ms-flex-pack: justify;
+              justify-content: space-between;
+      -webkit-box-align: end;
+      -webkit-align-items: flex-end;
+          -ms-flex-align: end;
+              align-items: flex-end;
+}
+#my_money .list > view > view:nth-of-type(1) > view:nth-of-type(1) {
+        padding-bottom: 10rpx;
+}
+#my_money .list > view > view:nth-of-type(1) .red {
+        color: red;
+}
+#my_money .list > view > view:nth-of-type(1) .red > text {
+          color: #333;
+}
+#my_money .list > view > view:nth-of-type(2) {
+        color: #FA893B;
+}
+#my_money .list > view > view:nth-of-type(2) > text {
+          font-size: 40rpx;
+}
+

@@ -1,0 +1,16 @@
+@charset "UTF-8";
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 文字尺寸 */
+#news_detail {
+  padding: 20rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+#news_detail > .title {
+    text-align: center;
+    font-size: 32rpx;
+    padding-bottom: 20rpx;
+}
+

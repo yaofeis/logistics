@@ -1,0 +1,99 @@
+@charset "UTF-8";
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 文字尺寸 */
+#index .nav {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-around;
+      -ms-flex-pack: distribute;
+          justify-content: space-around;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 20rpx 0;
+  background: #454454;
+}
+#index .nav > navigator {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+}
+#index .nav > navigator > image {
+      width: 70rpx;
+      height: 70rpx;
+      will-change: transform;
+}
+#index .nav > navigator > text {
+      font-size: 24rpx;
+}
+#index .new-thing {
+  padding: 20rpx;
+  border-bottom: 1px solid #E1E1E1;
+  color: #333;
+  font-size: 32rpx;
+}
+#index .news-list > navigator {
+  border-bottom: 1px solid #E1E1E1;
+  padding: 20rpx;
+}
+#index .news-list > navigator > view:nth-of-type(1) {
+    color: #333;
+    font-size: 28rpx;
+    padding-bottom: 20rpx;
+    white-space: nowrap;
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+       text-overflow: ellipsis;
+    width: 100%;
+}
+#index .news-list > navigator > view:nth-of-type(2) {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    height: 200rpx;
+}
+#index .news-list > navigator > view:nth-of-type(2) > image {
+      will-change: transform;
+      -webkit-flex-basis: 300rpx;
+          -ms-flex-preferred-size: 300rpx;
+              flex-basis: 300rpx;
+      height: 100%;
+}
+#index .news-list > navigator > view:nth-of-type(2) > view {
+      color: #333;
+      font-size: 28rpx;
+      padding-left: 20rpx;
+      -webkit-flex-basis: -webkit-calc(100% - 300rpx);
+          -ms-flex-preferred-size: calc(100% - 300rpx);
+              flex-basis: calc(100% - 300rpx);
+      text-align: justify;
+      height: 100%;
+      display: -webkit-box;
+      word-break: break-all;
+      -o-text-overflow: ellipsis;
+         text-overflow: ellipsis;
+      overflow: hidden;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 5;
+}
+

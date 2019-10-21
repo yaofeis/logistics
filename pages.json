@@ -1,0 +1,175 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/select/select",
+			"style": {
+				"navigationBarTitleText": "花城快线"
+			}
+		},
+		{
+			"path": "pages/receiveCoupon/receiveCoupon",
+			"style": {
+				"navigationBarTitleText": "领取优惠券"
+			}
+		},
+		{
+			"path": "pages/quickSend/quickSend",
+			"style": {
+				"navigationBarTitleText": "同城快送"
+			}
+		},
+		{
+			"path": "pages/rule/rule",
+			"style": {
+				"navigationBarTitleText": "规则"
+			}
+		},
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "同城运输"
+			}
+		},
+		{
+			"path": "pages/myMoney/myMoney",
+			"style": {
+				"navigationBarTitleText": "我的钱包"
+			}
+		},
+		{
+			"path": "pages/driverIndex/driverIndex",
+			"style": {
+				"navigationBarTitleText": "同城运输",
+				"enablePullDownRefresh": true,  //设置为true表示当前页面开启下拉刷新
+		        "backgroundTextStyle": "dark"  //下拉 loading 的样式，仅支持 dark/light
+			}
+		},
+		{
+			"path": "pages/registerSuccess/registerSuccess",
+			"style": {
+				"navigationBarTitleText": "司机注册成功"
+			}
+		},
+		{
+			"path": "pages/withdrawal/withdrawal",
+			"style": {
+				"navigationBarTitleText": "提现申请"
+			}
+		},
+		{
+			"path": "pages/code/code",
+			"style": {
+				"navigationBarTitleText": "提货码"
+			}
+		},
+		{
+			"path": "pages/coupon/coupon",
+			"style": {
+				"navigationBarTitleText": "优惠券"
+			}
+		},
+		{
+			"path": "pages/freight/freight",
+			"style": {
+				"navigationBarTitleText": "货运"
+			}
+		},
+		{
+			"path": "pages/robSuccess/robSuccess",
+			"style": {
+				"navigationBarTitleText": "订单详情",
+				"enablePullDownRefresh": true,  //设置为true表示当前页面开启下拉刷新
+				"backgroundTextStyle": "dark"  //下拉 loading 的样式，仅支持 dark/light
+			}
+		},
+		{
+			"path": "pages/detail/detail",
+			"style": {
+				"navigationBarTitleText": "订单详情"
+			}
+		},
+		{
+			"path": "pages/driverMine/driverMine",
+			"style": {
+				"navigationBarTitleText": "个人中心"
+			}
+		},
+		{
+			"path": "pages/register/register",
+			"style": {
+				"navigationBarTitleText": "司机注册"
+			}
+		},
+		{
+			"path": "pages/mine/mine",
+			"style": {
+				"navigationBarTitleText": "我的"
+			}
+		},
+		{
+			"path": "pages/order/order",
+			"style": {
+				"navigationBarTitleText": "订单列表"
+			}
+		},
+		{
+			"path": "pages/commonProblem/commonProblem",
+			"style": {
+				"navigationBarTitleText": "常见问题"
+			}
+		},
+
+		{
+			"path": "pages/confirmOrder/confirmOrder",
+			"style": {
+				"navigationBarTitleText": "填写订单"
+			}
+		},
+		{
+			"path": "pages/orderDetail/orderDetail",
+			"style": {
+				"navigationBarTitleText": "订单详情"
+			}
+		},
+		{
+			"path": "pages/evaluate/evaluate",
+			"style": {
+				"navigationBarTitleText": "评价"
+			}
+		},
+		{
+			"path": "pages/newsDetail/newsDetail",
+			"style": {
+				"navigationBarTitleText": "详情"
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+		"color": "#7A7E83",
+		"selectedColor": "#FA893B",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"list": [{
+			"pagePath": "pages/index/index",
+			"iconPath": "static/home.png",
+			"selectedIconPath": "static/home-select.png",
+			"text": "首页"
+		}, {
+			"pagePath": "pages/mine/mine",
+			"iconPath": "static/mine.png",
+			"selectedIconPath": "static/mine-select.png",
+			"text": "我的"
+		}]
+	},
+	"permission": {
+		"scope.userLocation": {
+			"desc": "你的位置信息将用于小程序位置接口的效果展示"
+		}
+	}
+}

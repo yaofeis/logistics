@@ -1,0 +1,51 @@
+@charset "UTF-8";
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 文字尺寸 */
+#coupon {
+  padding: 20rpx;
+}
+#coupon .list {
+    margin-bottom: 20rpx;
+    border: 1px solid #E1E1E1;
+    padding: 20rpx;
+    color: #333;
+    font-size: 28rpx;
+    -webkit-border-radius: 10rpx;
+            border-radius: 10rpx;
+    -webkit-box-shadow: 0 0 8px 2px #E1E1E1;
+            box-shadow: 0 0 8px 2px #E1E1E1;
+}
+#coupon .list > view:nth-of-type(3) {
+      text-align: center;
+      color: #FA893B;
+      font-size: 24rpx;
+}
+#coupon .list > view:nth-of-type(3) > text {
+        font-size: 40rpx;
+}
+#coupon .list > view:nth-of-type(4) {
+      text-align: right;
+      color: #E1E1E1;
+}
+#coupon .notUse {
+    background: #FA893B;
+    color: white;
+    font-size: 28rpx;
+    padding: 10rpx 20rpx;
+    margin: auto;
+    width: 100rpx;
+    text-align: center;
+    -webkit-border-radius: 10rpx;
+            border-radius: 10rpx;
+    -webkit-box-shadow: 0 0 8px 2px #E1E1E1;
+            box-shadow: 0 0 8px 2px #E1E1E1;
+    margin-top: 60rpx;
+}
+#coupon .not-coupon {
+    text-align: center;
+    color: #999999;
+    font-size: 28rpx;
+}
+

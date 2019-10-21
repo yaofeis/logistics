@@ -1,0 +1,52 @@
+@charset "UTF-8";
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 文字尺寸 */
+#code {
+  color: #333;
+  font-size: 28rpx;
+  padding-top: 100rpx;
+  text-align: center;
+}
+#code .title {
+    font-weight: bold;
+    font-size: 32rpx;
+}
+#code .tips {
+    padding-top: 40rpx;
+    padding-bottom: 60rpx;
+}
+#code > input {
+    border-bottom: 1px solid black;
+    width: 300rpx;
+    margin: auto;
+    height: 60rpx;
+    font-size: 32rpx;
+}
+#code .btn {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+}
+#code .btn > view {
+      width: 50%;
+      background: #FA893B;
+      color: white;
+      padding: 25rpx 0;
+      font-size: 32rpx;
+      letter-spacing: 10rpx;
+}
+#code .btn > view:nth-of-type(2) {
+      background: #454454;
+}
+

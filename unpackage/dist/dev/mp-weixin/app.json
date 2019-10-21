@@ -1,0 +1,56 @@
+{
+  "pages": [
+    "pages/select/select",
+    "pages/receiveCoupon/receiveCoupon",
+    "pages/quickSend/quickSend",
+    "pages/rule/rule",
+    "pages/index/index",
+    "pages/myMoney/myMoney",
+    "pages/driverIndex/driverIndex",
+    "pages/registerSuccess/registerSuccess",
+    "pages/withdrawal/withdrawal",
+    "pages/code/code",
+    "pages/coupon/coupon",
+    "pages/freight/freight",
+    "pages/robSuccess/robSuccess",
+    "pages/detail/detail",
+    "pages/driverMine/driverMine",
+    "pages/register/register",
+    "pages/mine/mine",
+    "pages/order/order",
+    "pages/commonProblem/commonProblem",
+    "pages/confirmOrder/confirmOrder",
+    "pages/orderDetail/orderDetail",
+    "pages/evaluate/evaluate",
+    "pages/newsDetail/newsDetail"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#FA893B",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/home.png",
+        "selectedIconPath": "static/home-select.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "iconPath": "static/mine.png",
+        "selectedIconPath": "static/mine-select.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "usingComponents": {},
+  "sitemapLocation": "sitemap86.json"
+}

@@ -1,0 +1,82 @@
+@charset "UTF-8";
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 文字尺寸 */
+#mine .userInfo {
+  background: #FA893B;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 40rpx;
+  font-size: 32rpx;
+  color: white;
+}
+#mine .userInfo > view {
+    margin-right: 40rpx;
+    width: 100rpx;
+    height: 100rpx;
+    -webkit-border-radius: 50%;
+            border-radius: 50%;
+    overflow: hidden;
+}
+#mine .list > navigator {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 25rpx 40rpx;
+  border-bottom: 1px solid #E1E1E1;
+}
+#mine .list > navigator > view {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+}
+#mine .list > navigator > view > view {
+      width: 40rpx;
+      height: 40rpx;
+      background: #FA893B;
+      -webkit-border-radius: 50%;
+              border-radius: 50%;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+          -ms-flex-align: center;
+              align-items: center;
+      -webkit-box-pack: center;
+      -webkit-justify-content: center;
+          -ms-flex-pack: center;
+              justify-content: center;
+}
+#mine .list > navigator > view > view > text {
+        color: white;
+        font-size: 24rpx;
+}
+#mine .list > navigator > view > text {
+      color: #333;
+      font-size: 28rpx;
+      padding-left: 40rpx;
+}
+

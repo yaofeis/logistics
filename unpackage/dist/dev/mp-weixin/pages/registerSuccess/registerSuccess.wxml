@@ -1,0 +1,2 @@
+<view id="registerSuccess"><view>提交成功!</view><view>恭喜您！您的信息已经提交到我公司，我们的工作人员
+		会在1-3个工作日跟您联系，请您保持电话通畅，谢谢您的支持。</view><view><text data-event-opts="{{[['tap',[['goBack',['$event']]]]]}}" bindtap="__e">确认</text></view></view>

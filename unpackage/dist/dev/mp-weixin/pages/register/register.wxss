@@ -1,0 +1,123 @@
+@charset "UTF-8";
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 文字尺寸 */
+#register {
+  background: #F9F9F9;
+  padding: 40rpx 40rpx 200rpx 40rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+#register .top-box {
+    border: 1px solid #E1E1E1;
+    -webkit-border-radius: 5px;
+            border-radius: 5px;
+    background: white;
+    padding: 10rpx;
+}
+#register .top-box > view {
+      padding: 15rpx;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+          -ms-flex-align: center;
+              align-items: center;
+      border-bottom: 1px solid #E1E1E1;
+}
+#register .top-box > view > text {
+        -webkit-flex-basis: 150rpx;
+            -ms-flex-preferred-size: 150rpx;
+                flex-basis: 150rpx;
+}
+#register .top-box > view > input,
+      #register .top-box > view > picker,
+      #register .top-box > view > radio-group {
+        width: 100%;
+}
+#register .top-box > view > radio-group > label {
+        margin-left: 10rpx;
+}
+#register .top-box > view.last {
+      border-bottom: none;
+}
+#register .tel {
+    margin-top: 50rpx;
+    border: 1px solid #E1E1E1;
+    -webkit-border-radius: 5px;
+            border-radius: 5px;
+    background: white;
+    padding: 10rpx;
+}
+#register .tel > view {
+      padding: 15rpx;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+          -ms-flex-align: center;
+              align-items: center;
+      border-bottom: 1px solid #E1E1E1;
+}
+#register .tel > view > text {
+        -webkit-flex-basis: 200rpx;
+            -ms-flex-preferred-size: 200rpx;
+                flex-basis: 200rpx;
+}
+#register .tel > view > input {
+        width: 100%;
+}
+#register .tel > view.last {
+      border-bottom: none;
+}
+#register .upload {
+    margin-top: 50rpx;
+}
+#register .upload > view {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+          -ms-flex-align: center;
+              align-items: center;
+      padding-bottom: 20rpx;
+}
+#register .upload > view > text {
+        -webkit-flex-basis: 200rpx;
+            -ms-flex-preferred-size: 200rpx;
+                flex-basis: 200rpx;
+}
+#register .upload > view > view {
+        border: 1px solid #E1E1E1;
+        width: 200rpx;
+        height: 200rpx;
+}
+#register .upload > view > view > image {
+          width: 100%;
+          height: 100%;
+}
+#register .submit {
+    position: fixed;
+    width: 100%;
+    padding: 40rpx;
+    bottom: 0;
+    left: 0;
+    background: #F9F9F9;
+}
+#register .submit > view {
+      width: -webkit-calc(100% - 80rpx);
+      width: calc(100% - 80rpx);
+      background: #FA893B;
+      color: white;
+      font-size: 32rpx;
+      padding: 20rpx 0;
+      text-align: center;
+}
+

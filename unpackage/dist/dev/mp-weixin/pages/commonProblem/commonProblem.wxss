@@ -1,0 +1,66 @@
+@charset "UTF-8";
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 文字尺寸 */
+#commonProblem .news-list > navigator {
+  border-bottom: 1px solid #E1E1E1;
+  padding: 20rpx;
+}
+#commonProblem .news-list > navigator > view:nth-of-type(1) {
+    color: #333;
+    font-size: 28rpx;
+    padding-bottom: 20rpx;
+    white-space: nowrap;
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+       text-overflow: ellipsis;
+    width: 100%;
+}
+#commonProblem .news-list > navigator > view:nth-of-type(2) {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    height: 200rpx;
+}
+#commonProblem .news-list > navigator > view:nth-of-type(2) > image {
+      will-change: transform;
+      -webkit-flex-basis: 300rpx;
+          -ms-flex-preferred-size: 300rpx;
+              flex-basis: 300rpx;
+      height: 100%;
+}
+#commonProblem .news-list > navigator > view:nth-of-type(2) > view {
+      color: #333;
+      font-size: 28rpx;
+      padding-left: 20rpx;
+      -webkit-flex-basis: -webkit-calc(100% - 300rpx);
+          -ms-flex-preferred-size: calc(100% - 300rpx);
+              flex-basis: calc(100% - 300rpx);
+      height: 100%;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -webkit-flex-direction: column;
+          -ms-flex-direction: column;
+              flex-direction: column;
+      -webkit-box-pack: justify;
+      -webkit-justify-content: space-between;
+          -ms-flex-pack: justify;
+              justify-content: space-between;
+}
+#commonProblem .news-list > navigator > view:nth-of-type(2) > view > view:nth-of-type(1) {
+        text-align: justify;
+        display: -webkit-box;
+        word-break: break-all;
+        -o-text-overflow: ellipsis;
+           text-overflow: ellipsis;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+}
+

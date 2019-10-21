@@ -1,0 +1,69 @@
+@charset "UTF-8";
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 文字尺寸 */
+#withdrawal {
+  font-size: 28rpx;
+  color: #333;
+  padding: 20rpx;
+}
+#withdrawal .form > view {
+    border-bottom: 1px solid #E1E1E1;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding: 10rpx 0;
+}
+#withdrawal .form > view > text {
+      -webkit-flex-basis: 180rpx;
+          -ms-flex-preferred-size: 180rpx;
+              flex-basis: 180rpx;
+      text-align: justify;
+}
+#withdrawal .form > view > input {
+      -webkit-flex-basis: -webkit-calc(100% - 180rpx);
+          -ms-flex-preferred-size: calc(100% - 180rpx);
+              flex-basis: calc(100% - 180rpx);
+}
+#withdrawal .tips {
+    color: #999999;
+    padding-top: 10rpx;
+    font-size: 24rpx;
+}
+#withdrawal .btn {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 120rpx;
+    padding: 20rpx;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+}
+#withdrawal .btn > view {
+      width: 100%;
+      height: 100%;
+      background: #FA893B;
+      color: white;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+          -ms-flex-align: center;
+              align-items: center;
+      -webkit-box-pack: center;
+      -webkit-justify-content: center;
+          -ms-flex-pack: center;
+              justify-content: center;
+      -webkit-border-radius: 5px;
+              border-radius: 5px;
+}
+

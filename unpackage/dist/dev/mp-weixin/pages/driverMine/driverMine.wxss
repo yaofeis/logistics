@@ -1,0 +1,133 @@
+@charset "UTF-8";
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 文字尺寸 */
+#driver_mine {
+  background: #F9F9F9;
+  font-size: 28rpx;
+  color: #333;
+}
+#driver_mine .list .userInfo {
+    background: #FA893B;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding: 40rpx;
+    font-size: 32rpx;
+    color: white;
+}
+#driver_mine .list .userInfo > view {
+      margin-right: 40rpx;
+      width: 100rpx;
+      height: 100rpx;
+      -webkit-border-radius: 50%;
+              border-radius: 50%;
+      overflow: hidden;
+}
+#driver_mine .list .list-menu > navigator {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding: 25rpx 40rpx;
+    border-bottom: 1px solid #E1E1E1;
+}
+#driver_mine .list .list-menu > navigator > view {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+          -ms-flex-align: center;
+              align-items: center;
+}
+#driver_mine .list .list-menu > navigator > view > view {
+        width: 40rpx;
+        height: 40rpx;
+        background: #FA893B;
+        -webkit-border-radius: 50%;
+                border-radius: 50%;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+            -ms-flex-align: center;
+                align-items: center;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+}
+#driver_mine .list .list-menu > navigator > view > view > text {
+          color: white;
+          font-size: 24rpx;
+}
+#driver_mine .list .list-menu > navigator > view > text {
+        color: #333;
+        font-size: 28rpx;
+        padding-left: 40rpx;
+}
+#driver_mine .nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 90rpx;
+    border-top: 1px solid #E1E1E1;
+    width: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-justify-content: space-around;
+        -ms-flex-pack: distribute;
+            justify-content: space-around;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    font-size: 24rpx;
+    background: white;
+}
+#driver_mine .nav > navigator {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -webkit-flex-direction: column;
+          -ms-flex-direction: column;
+              flex-direction: column;
+      -webkit-box-pack: center;
+      -webkit-justify-content: center;
+          -ms-flex-pack: center;
+              justify-content: center;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+          -ms-flex-align: center;
+              align-items: center;
+}
+#driver_mine .nav > navigator > image {
+        width: 50rpx;
+        height: 50rpx;
+        margin-bottom: 5rpx;
+        will-change: transform;
+}
+
