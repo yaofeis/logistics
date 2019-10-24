@@ -64,12 +64,12 @@
 			}
 		},
 		onLoad() {
-			
+
 		},
 		methods: {
 			callPhone() {
 				uni.makePhoneCall({
-					phoneNumber: '114'
+					phoneNumber: uni.getStorageSync("serveMobile")
 				});
 			}
 		}

@@ -63,7 +63,7 @@
 					url: _this.http.pay,
 					data: {
 						orderId: _this.orderInfo.orderId,
-						openId: uni.getStorageSync("userInfo").openId
+						openId: uni.getStorageSync("openId")
 					},
 					success: (res) => {
 						if (res.code === '0') {
@@ -108,12 +108,13 @@
 			},
 			callPhone() {
 				uni.makePhoneCall({
-					phoneNumber: '18302846993'
+					phoneNumber: uni.getStorageSync("serveMobile")
 				});
 			},
 			callDriver() {
+				let _this = this;
 				uni.makePhoneCall({
-					phoneNumber: this.orderInfo.driverMobile
+					phoneNumber: _this.orderInfo.driverMobile
 				});
 			},
 			cancelOrder() {

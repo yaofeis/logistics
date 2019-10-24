@@ -72,7 +72,7 @@
 		methods: {
 			callPhone() {
 				uni.makePhoneCall({
-					phoneNumber: '114'
+					phoneNumber: uni.getStorageSync("serveMobile")
 				});
 			}
 		}
@@ -124,13 +124,13 @@
 							display: flex;
 							align-items: center;
 							justify-content: center;
-						
+
 							>text {
 								color: white;
 								font-size: $font-size-sm;
 							}
 						}
-						
+
 						>text {
 							color: $text-color;
 							font-size: $font-size-base;

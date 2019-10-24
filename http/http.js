@@ -27,5 +27,6 @@ const http = {
 	pay: _http + 'pay/createPay.do',// 支付
 	getRecevieCouponList: _http + 'coupon/getCouponList.do', // 获取领取优惠券时的优惠券列表
 	addUserCoupon: _http + 'userCoupon/addUserCoupon.do', // 领取优惠券
+	getSetting: _http + 'setting/getSettingById.do', // 获取系统设置
 };
 export default http;

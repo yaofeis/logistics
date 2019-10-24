@@ -1,7 +1,7 @@
 <template>
 	<view id="select">
 		<view class="info">
-			<view>花城快线</view>
+			<view>{{info.name}}</view>
 			<image src="../../static/logo.png"></image>
 		</view>
 		<view class="btn">
@@ -10,11 +10,11 @@
 			<view @click="toIndex(2)">司机</view>
 		</view>
 		<view class="bottom">
-			<view>花城快线</view>
-			<view>帮您拉货、搬家、运东西!</view>
+			<view>{{info.name}}</view>
+			<view>{{info.title}}</view>
 			<view>
-				<text>联系方式:18302846993</text>
-				<text>电子邮箱:185286405@qq.com</text>
+				<text>联系方式:{{info.tel}}</text>
+				<text>电子邮箱:{{info.email}}</text>
 			</view>
 		</view>
 		<view class="setting" v-show="isShow" @click="setting">
@@ -29,7 +29,13 @@
 			return {
 				isShow: false,
 				data: null,
-				isSuccess: false
+				isSuccess: false,
+				info: {
+					name: "",
+					title: "",
+					tel: "",
+					email: ""
+				}
 			}
 		},
 		onLoad() {
@@ -39,6 +45,29 @@
 				success: function(res) {
 					if (res.code) {
 						_this.getUserData(res.code);
+					}
+				}
+			});
+
+			// 获取系统设置
+			_this.request({
+				url: _this.http.getSetting,
+				data: {
+					settingId: 1
+				},
+				success(res) {
+					if (res.code === '0') {
+						_this.info.name = res.result.platName;
+						_this.info.title = res.result.platTitle;
+						_this.info.tel = res.result.platMobile;
+						_this.info.email = res.result.platMail;
+						uni.setStorageSync('serveMobile', res.result.serveMobile);
+					} else {
+						uni.showToast({
+							title: res.message,
+							duration: 2000,
+							icon: 'none'
+						});
 					}
 				}
 			});
@@ -55,7 +84,7 @@
 					success: (res) => {
 						if (res.code === '0') {
 							_this.isSuccess = true;
-							uni.setStorageSync('userData', res.result);
+							uni.setStorageSync('openId', res.result.openId);
 							_this.getJurisdiction();
 						} else {
 							uni.showToast({
@@ -92,7 +121,7 @@
 					}
 				});
 			},
-			
+
 			// 点击按钮1用户2司机
 			toIndex(type) {
 				let _this = this;
@@ -101,73 +130,75 @@
 					icon: 'none',
 					mask: true
 				});
-				let url = type === 1 ? '/pages/index/index' : '/pages/register/register';
+				let url = type === 1 ? '/pages/index/index' : '/pages/driverIndex/driverIndex';
 				uni.getSetting({
 					success(res) {
+						// 没有授权位置权限不让其进入小程序
 						if (!res.authSetting['scope.userLocation']) {
-							uni.showToast({
+							return uni.showToast({
 								title: '请允许花城快线使用您的地理位置,点击左上角设置打开',
 								icon: 'none',
 								mask: true
 							});
-						} else {
-							_this.data = uni.getStorageSync('userData');
-							if (_this.data.userType === 1) {
-								uni.setStorageSync('userInfo', _this.data.userInfo);
-								uni.reLaunch({
-									url: '/pages/index/index'
-								})
-							} else if (_this.data.userType === 2) {
-								uni.setStorageSync('userInfo', _this.data.userInfo);
-								if (_this.data.userInfo.authStatus === 2) {
-									uni.showToast({
-										title: "您的审核被拒绝，请重新上传资料审核或与我司联系!",
-										icon: 'none',
-										duration: 2000
-									});
-									setTimeout(() => {
+						}
+						_this.request({
+							url: _this.http.login,
+							data: {
+								openId: uni.getStorageSync("openId"),
+								userType: type
+							},
+							success: (res) => {
+								if (res.code === '0') {
+									uni.removeStorageSync("userInfo");
+									uni.setStorageSync('userInfo', res.result.userInfo);
+									if (type === 2) {
+										// 司机端判断状态，否则跳转到注册页面或不跳转（1通过2未通过3认证中4未认证）
+										switch (res.result.userInfo.authStatus) {
+											case 1:
+												uni.reLaunch({
+													url: url
+												});
+												break;
+											case 2:
+												uni.showToast({
+													title: "您的审核资料未通过，请重新上传!",
+													icon: 'none'
+												});
+												_this.toRegister();
+												break;
+											case 3:
+												uni.showToast({
+													title: "您的审核资料正在认证中，请耐心等待!",
+													icon: 'none'
+												});
+												break;
+											case 4:
+												_this.toRegister();
+												break;
+										}
+									} else {
 										uni.reLaunch({
-											url: '/pages/register/register'
-										})
-									}, 2000)
-									return false;
-								} else if (_this.data.userInfo.authStatus === 3) {
-									return uni.showToast({
-										title: "您的审核正在审核中，请耐心等候!",
+											url: url
+										});
+									}
+								} else {
+									uni.showToast({
+										title: res.message,
 										icon: 'none'
 									});
 								}
-								uni.reLaunch({
-									url: '/pages/driverIndex/driverIndex'
-								});
-							} else {
-								_this.request({
-									url: _this.http.login,
-									data: {
-										openId: uni.getStorageSync("userData").openId,
-										userType: type
-									},
-									success: (res) => {
-										if (res.code === '0') {
-											uni.removeStorageSync("userData");
-											uni.setStorageSync('userData', res.result);
-											uni.removeStorageSync("userInfo");
-											uni.setStorageSync('userInfo', res.result.userInfo);
-											uni.reLaunch({
-												url: url
-											});
-										} else {
-											uni.showToast({
-												title: res.message,
-												icon: 'none'
-											});
-										}
-									}
-								});
 							}
-						}
+						});
 					}
 				})
+			},
+			// 跳转到司机注册页面
+			toRegister() {
+				setTimeout(() => {
+					uni.reLaunch({
+						url: '/pages/register/register'
+					})
+				}, 2000);
 			},
 			// 打开获取权限列表
 			setting() {
@@ -180,40 +211,6 @@
 					}
 				})
 			},
-			// goWhere() {
-			// 	// 判断小程序跳转去哪个页面
-			// 	let _this = this;
-			// 	_this.data = uni.getStorageSync('userData');
-			// 	if (_this.data.userType === 1) {
-			// 		uni.setStorageSync('userInfo', _this.data.userInfo);
-			// 		uni.reLaunch({
-			// 			url: '/pages/index/index'
-			// 		})
-			// 	} else if (_this.data.userType === 2) {
-			// 		uni.setStorageSync('userInfo', _this.data.userInfo);
-			// 		if (_this.data.userInfo.authStatus === 2) {
-			// 			uni.showToast({
-			// 				title: "您的审核被拒绝，请重新上传资料审核或与我司联系!",
-			// 				icon: 'none',
-			// 				duration: 2000
-			// 			});
-			// 			setTimeout(() => {
-			// 				uni.reLaunch({
-			// 					url: '/pages/register/register'
-			// 				})
-			// 			}, 2000)
-			// 			return false;
-			// 		} else if (_this.data.userInfo.authStatus === 3) {
-			// 			return uni.showToast({
-			// 				title: "您的审核正在审核中，请耐心等候!",
-			// 				icon: 'none'
-			// 			});
-			// 		}
-			// 		uni.reLaunch({
-			// 			url: '/pages/driverIndex/driverIndex'
-			// 		});
-			// 	}
-			// }
 		}
 	}
 </script>

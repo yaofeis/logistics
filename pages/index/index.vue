@@ -35,7 +35,7 @@
 				<view>{{item.newsTitle}}</view>
 				<view>
 					<image :src="item.showImage"></image>
-					<view>{{item.newsContent.substring(0, 50)}}...</view>
+					<view>{{item.showContent}}</view>
 				</view>
 			</navigator>
 		</view>
@@ -75,12 +75,15 @@
 				url: _this.http.getNewsList,
 				data: {
 					pageNum: '1',
-					pageSize: '3',
+					pageSize: '100',
 					newsType: '1'
 				},
 				success: (res) => {
 					if (res.code === '0') {
 						_this.newsList = res.result;
+						_this.newsList.map(item => {
+							item.showContent = item.showContent && item.showContent.substring(0, 50) + '...';
+						});
 					}
 					_this.httpNum++;
 					_this.countHttp();
