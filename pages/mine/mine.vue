@@ -12,7 +12,7 @@
 					<view>
 						<text class="iconfont icon-dingdan"></text>
 					</view>
-					<text>快递订单</text>
+					<text>货运订单</text>
 				</view>
 				<text class="iconfont icon-youjiantou"></text>
 			</navigator>
@@ -21,7 +21,7 @@
 					<view>
 						<text class="iconfont icon-youjian"></text>
 					</view>
-					<text>货运订单</text>
+					<text>快递订单</text>
 				</view>
 				<text class="iconfont icon-youjiantou"></text>
 			</navigator>

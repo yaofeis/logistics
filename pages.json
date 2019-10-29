@@ -7,6 +7,14 @@
 			}
 		},
 		{
+			"path": "pages/driverIndex/driverIndex",
+			"style": {
+				"navigationBarTitleText": "同城运输",
+				"enablePullDownRefresh": true,  //设置为true表示当前页面开启下拉刷新
+		        "backgroundTextStyle": "dark"  //下拉 loading 的样式，仅支持 dark/light
+			}
+		},
+		{
 			"path": "pages/receiveCoupon/receiveCoupon",
 			"style": {
 				"navigationBarTitleText": "领取优惠券"
@@ -34,14 +42,6 @@
 			"path": "pages/myMoney/myMoney",
 			"style": {
 				"navigationBarTitleText": "我的钱包"
-			}
-		},
-		{
-			"path": "pages/driverIndex/driverIndex",
-			"style": {
-				"navigationBarTitleText": "同城运输",
-				"enablePullDownRefresh": true,  //设置为true表示当前页面开启下拉刷新
-		        "backgroundTextStyle": "dark"  //下拉 loading 的样式，仅支持 dark/light
 			}
 		},
 		{

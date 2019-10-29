@@ -22,6 +22,7 @@
 		onLoad(params) {
 			let _this = this;
 			let userInfo = uni.getStorageSync("userInfo");
+			// 获取可获取优惠券列表
 			_this.request({
 				url: _this.http.getRecevieCouponList,
 				data: {
@@ -31,10 +32,29 @@
 				},
 				success: (res) => {
 					if (res.code === '0') {
-						_this.couponList = res.result;
+						// 获取当前用户已拥有的优惠券列表
+						_this.request({
+							url: _this.http.getCouponList,
+							data: {
+								pageNum: '1',
+								pageSize: '100',
+								userId: userInfo.userId
+							},
+							success: (res1) => {
+								if (res.code === '0') {
+									// 去除用户已有的优惠券
+									res.result.map((item) => {
+										let _coupon = res1.result.find(item1 => item1.couponId === item.couponId);
+										if (!_coupon) {
+											_this.couponList.push(item);
+										}
+									})
+								}
+							}
+						}, false);
 					}
 				}
-			});
+			}, false);
 		},
 		methods: {
 			getCoupon(data) {
@@ -54,7 +74,13 @@
 								icon: "success",
 								mask: true
 							});
-						}else{
+							for (let i = 0; i < _this.couponList.length; i++) {
+								if (_this.couponList[i].couponId === data.couponId) {
+									_this.couponList.splice(i, 1);
+									break;
+								}
+							}
+						} else {
 							uni.showToast({
 								title: '获取失败',
 								duration: 2000,

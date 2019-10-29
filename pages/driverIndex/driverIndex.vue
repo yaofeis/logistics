@@ -1,7 +1,7 @@
 <template>
 	<view id="driver_index">
 		<view class="list">
-			<navigator class="list-child" v-for="(item, index) in list" :key="index" :url="'/pages/detail/detail?orderId=' + item.orderId">
+			<navigator v-if="list.length > 0" class="list-child" v-for="(item, index) in list" :key="index" :url="'/pages/detail/detail?orderId=' + item.orderId">
 				<view class="time">
 					<text>{{item.appointmentTime | timeDetail}}</text>
 					<text><text class="iconfont icon-dingwei"></text>距您约{{item.currentDistance.toFixed(1)}}km</text>
@@ -25,9 +25,9 @@
 					</view>
 				</view>
 			</navigator>
+			<view v-if="list.length === 0">暂无订单</view>
 			<view>
-				<text>{{loading}}</text>
-				<view v-show="loading === '加载中'"></view>
+				<text v-show="isLoad">没有更多订单啦~</text>
 			</view>
 		</view>
 		<view class="nav">
@@ -48,9 +48,8 @@
 		data() {
 			return {
 				list: [],
-				loading: "加载中",
 				pageNum: 1,
-				pageSize: 3,
+				pageSize: 10,
 				total: 0,
 				isLoad: false,
 				currentLon: 0,
@@ -60,67 +59,25 @@
 		// 上拉加载
 		onReachBottom() {
 			let _this = this;
-			_this.pageNum++;
-			if (_this.pageNum > Math.ceil(_this.total / _this.pageSize)) {
-				return _this.loading = '暂无数据';
-			}
-			if (_this.isLoad) return false;
-			_this.isLoad = true;
-			_this.request({
-				url: _this.http.getRobOrderList,
-				data: {
-					pageNum: _this.pageNum,
-					pageSize: _this.pageSize
-				},
-				success: (res) => {
-					if (res.code === '0') {
-						res.result.map((e) => {
-							e.currentDistance = _this.GetDistance(_this.currentLat, _this.currentLon, e.startLat, e.startLong);
-							_this.list.push(e);
-						});
-						_this.total = res.total;
-					} else {
-						uni.showToast({
-							title: res.message,
-							icon: 'none'
-						});
-					}
-					_this.loading = '加载完成';
-					_this.isLoad = false;
+			if (_this.total > 5) {
+				_this.pageNum++;
+				if (_this.pageNum > Math.ceil(_this.total / _this.pageSize)) {
+					return _this.isLoad = true;
 				}
-			}, false);
+				_this.init(false);
+			}
 		},
 		// 下拉刷新
 		onPullDownRefresh() {
 			let _this = this;
 			_this.pageNum = 1;
+			_this.list = [];
 			uni.getLocation({
 				type: 'wgs84',
 				success: function(res) {
 					_this.currentLon = res.longitude;
 					_this.currentLat = res.latitude;
-					_this.request({
-						url: _this.http.getRobOrderList,
-						data: {
-							pageNum: _this.pageNum,
-							pageSize: _this.pageSize
-						},
-						success: (res) => {
-							if (res.code === '0') {
-								res.result.map((e) => {
-									e.currentDistance = _this.GetDistance(_this.currentLat, _this.currentLon, e.startLat, e.startLong);
-								});
-								_this.list = res.result;
-								_this.total = res.total;
-							} else {
-								uni.showToast({
-									title: res.message,
-									icon: 'none'
-								});
-							}
-							uni.stopPullDownRefresh();
-						}
-					}, false);
+					_this.init(true);
 				}
 			});
 		},
@@ -131,12 +88,12 @@
 				success: function(res) {
 					_this.currentLon = res.longitude;
 					_this.currentLat = res.latitude;
-					_this.init();
+					_this.init(false);
 				}
 			});
 		},
 		methods: {
-			init() {
+			init(pullDown) {
 				let _this = this;
 				_this.request({
 					url: _this.http.getRobOrderList,
@@ -145,24 +102,21 @@
 						pageSize: _this.pageSize
 					},
 					success: (res) => {
-						let _title = "";
 						if (res.code === '0') {
 							res.result.map((e) => {
 								e.currentDistance = _this.GetDistance(_this.currentLat, _this.currentLon, e.startLat, e.startLong);
+								_this.list.push(e);
 							});
-							_this.list = res.result;
 							_this.total = res.total;
-							_title = res.total > 0 ? "加载完成" : "暂无数据";
 						} else {
 							uni.showToast({
 								title: res.message,
 								icon: 'none'
 							});
 						}
-						_this.loading = _title;
-						_this.isLoad = false;
+						pullDown && uni.stopPullDownRefresh();
 					}
-				}, false);
+				});
 			},
 			// 计算两点之间的距离
 			GetDistance(lat1, lng1, lat2, lng2) {

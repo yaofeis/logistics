@@ -6,7 +6,7 @@
 				<view>
 					<image :src="item.showImage"></image>
 					<view>
-						<view>{{item.newsContent}}</view>
+						<view>{{item.showContent}}</view>
 						<view>{{item.createdDate | time}}</view>
 					</view>
 				</view>

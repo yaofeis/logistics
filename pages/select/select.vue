@@ -195,7 +195,7 @@
 			// 跳转到司机注册页面
 			toRegister() {
 				setTimeout(() => {
-					uni.reLaunch({
+					uni.navigateTo({
 						url: '/pages/register/register'
 					})
 				}, 2000);
