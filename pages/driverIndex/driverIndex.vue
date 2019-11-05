@@ -1,34 +1,34 @@
 <template>
 	<view id="driver_index">
 		<view class="list">
-			<navigator v-if="list.length > 0" class="list-child" v-for="(item, index) in list" :key="index" :url="'/pages/detail/detail?orderId=' + item.orderId">
-				<view class="time">
-					<text>{{item.appointmentTime | timeDetail}}</text>
-					<text><text class="iconfont icon-dingwei"></text>距您约{{item.currentDistance.toFixed(1)}}km</text>
-				</view>
-				<view class="address">
-					<view class="fa">发</view>
-					<view>{{item.startPlace}}</view>
-				</view>
-				<view class="address">
-					<view class="shou">收</view>
-					<view>{{item.endPlace}}</view>
-				</view>
-				<view class="information">
-					<view>
-						<view>总距离:{{item.distance}}km</view>
-						<view>{{item.transportName || item.goodsName}}</view>
+			<view v-if="list.length > 0">
+				<navigator class="list-child" v-for="(item, index) in list" :key="index" :url="item.status === 1 ? '/pages/detail/detail?orderId=' + item.orderId : ''">
+					<view class="time">
+						<text>{{item.appointmentTime | timeDetail}}</text>
+						<text><text class="iconfont icon-dingwei"></text>距您约{{item.currentDistance.toFixed(1)}}km</text>
 					</view>
-					<view>
-						<view>￥<text>{{item.estimatePrice}}</text></view>
-						<view>详情</view>
+					<view class="address">
+						<view class="fa">发</view>
+						<view>{{item.startPlace}}</view>
 					</view>
-				</view>
-			</navigator>
-			<view v-if="list.length === 0">暂无订单</view>
-			<view>
-				<text v-show="isLoad">没有更多订单啦~</text>
+					<view class="address">
+						<view class="shou">收</view>
+						<view>{{item.endPlace}}</view>
+					</view>
+					<view class="information">
+						<view>
+							<view>总距离:{{item.distance}}km</view>
+							<view>{{item.transportName || item.goodsName}}</view>
+						</view>
+						<view>
+							<view>￥<text>{{item.estimatePrice}}</text></view>
+							<view :class="item.status===1?'':'disabled'">详情</view>
+						</view>
+					</view>
+				</navigator>
 			</view>
+			<view class="tips" v-if="list.length === 0">暂无订单</view>
+			<view class="tips" v-show="isLoad">没有更多订单啦~</view>
 		</view>
 		<view class="nav">
 			<navigator url="/pages/driverIndex/driverIndex" open-type="reLaunch">
@@ -49,7 +49,7 @@
 			return {
 				list: [],
 				pageNum: 1,
-				pageSize: 10,
+				pageSize: 20,
 				total: 0,
 				isLoad: false,
 				currentLon: 0,
@@ -59,17 +59,16 @@
 		// 上拉加载
 		onReachBottom() {
 			let _this = this;
-			if (_this.total > 5) {
-				_this.pageNum++;
-				if (_this.pageNum > Math.ceil(_this.total / _this.pageSize)) {
-					return _this.isLoad = true;
-				}
-				_this.init(false);
+			_this.pageNum++;
+			if (_this.pageNum > Math.ceil(_this.total / _this.pageSize)) {
+				return _this.isLoad = true;
 			}
+			_this.init(false);
 		},
 		// 下拉刷新
 		onPullDownRefresh() {
 			let _this = this;
+			_this.isLoad = false;
 			_this.pageNum = 1;
 			_this.list = [];
 			uni.getLocation({
@@ -216,25 +215,36 @@
 							margin-top: 10upx;
 							width: 100upx;
 						}
+						
+						>.disabled{
+							background: $bg-color-gray !important;
+						}
 					}
 				}
 			}
 
-			>view {
-				display: flex;
-				justify-content: center;
-				align-items: center;
+			.tips {
+				text-align: center;
+				color: $text-999999;
+				font-size: $font-size-sm;
 				padding-bottom: 10upx;
-
-				>view {
-					width: 25upx;
-					height: 25upx;
-					border-left: 1px solid red;
-					border-right: 1px solid $bg-color-orange;
-					border-radius: 100%;
-					animation: loading 1s infinite linear;
-				}
 			}
+
+			// 			>view {
+			// 				display: flex;
+			// 				justify-content: center;
+			// 				align-items: center;
+			// 				padding-bottom: 10upx;
+			// 
+			// 				>view {
+			// 					width: 25upx;
+			// 					height: 25upx;
+			// 					border-left: 1px solid red;
+			// 					border-right: 1px solid $bg-color-orange;
+			// 					border-radius: 100%;
+			// 					animation: loading 1s infinite linear;
+			// 				}
+			// 			}
 		}
 
 		.nav {
