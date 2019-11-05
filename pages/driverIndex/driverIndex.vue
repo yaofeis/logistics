@@ -2,30 +2,56 @@
 	<view id="driver_index">
 		<view class="list">
 			<view v-if="list.length > 0">
-				<navigator class="list-child" v-for="(item, index) in list" :key="index" :url="item.status === 1 ? '/pages/detail/detail?orderId=' + item.orderId : ''">
-					<view class="time">
-						<text>{{item.appointmentTime | timeDetail}}</text>
-						<text><text class="iconfont icon-dingwei"></text>距您约{{item.currentDistance.toFixed(1)}}km</text>
-					</view>
-					<view class="address">
-						<view class="fa">发</view>
-						<view>{{item.startPlace}}</view>
-					</view>
-					<view class="address">
-						<view class="shou">收</view>
-						<view>{{item.endPlace}}</view>
-					</view>
-					<view class="information">
-						<view>
-							<view>总距离:{{item.distance}}km</view>
-							<view>{{item.transportName || item.goodsName}}</view>
+				<view v-for="(item, index) in list" :key="index">
+					<view v-if="item.status !== 1" class="list-child">
+						<view class="time">
+							<text>{{item.appointmentTime | timeDetail}}</text>
+							<text><text class="iconfont icon-dingwei"></text>距您约{{item.currentDistance.toFixed(1)}}km</text>
 						</view>
-						<view>
-							<view>￥<text>{{item.estimatePrice}}</text></view>
-							<view :class="item.status===1?'':'disabled'">详情</view>
+						<view class="address">
+							<view class="fa">发</view>
+							<view>{{item.startPlace}}</view>
+						</view>
+						<view class="address">
+							<view class="shou">收</view>
+							<view>{{item.endPlace}}</view>
+						</view>
+						<view class="information">
+							<view>
+								<view>总距离:{{item.distance}}km</view>
+								<view>{{item.transportName || item.goodsName}}</view>
+							</view>
+							<view>
+								<view>￥<text>{{item.estimatePrice}}</text></view>
+								<view class="disabled">已抢单</view>
+							</view>
 						</view>
 					</view>
-				</navigator>
+					<navigator v-else class="list-child" :url="'/pages/detail/detail?orderId=' + item.orderId">
+						<view class="time">
+							<text>{{item.appointmentTime | timeDetail}}</text>
+							<text><text class="iconfont icon-dingwei"></text>距您约{{item.currentDistance.toFixed(1)}}km</text>
+						</view>
+						<view class="address">
+							<view class="fa">发</view>
+							<view>{{item.startPlace}}</view>
+						</view>
+						<view class="address">
+							<view class="shou">收</view>
+							<view>{{item.endPlace}}</view>
+						</view>
+						<view class="information">
+							<view>
+								<view>总距离:{{item.distance}}km</view>
+								<view>{{item.transportName || item.goodsName}}</view>
+							</view>
+							<view>
+								<view>￥<text>{{item.estimatePrice}}</text></view>
+								<view>详情</view>
+							</view>
+						</view>
+					</navigator>
+				</view>
 			</view>
 			<view class="tips" v-if="list.length === 0">暂无订单</view>
 			<view class="tips" v-show="isLoad">没有更多订单啦~</view>
@@ -102,7 +128,7 @@
 					},
 					success: (res) => {
 						if (res.code === '0') {
-							res.result.map((e) => {
+							res.result.map((e,index) => {
 								e.currentDistance = _this.GetDistance(_this.currentLat, _this.currentLon, e.startLat, e.startLong);
 								_this.list.push(e);
 							});
