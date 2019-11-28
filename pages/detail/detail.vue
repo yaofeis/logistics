@@ -28,6 +28,14 @@
 			<view>是否需要搬运:{{order.isCarry === 1 ? '需要' : '不需要'}}</view>
 			<view v-show="order.transportName">车型:{{order.transportName}}</view>
 			<view>时间:{{order.appointmentTime | timeDetail}}</view>
+			<view class="tel">
+				<text>发货人:{{order.contactsMobile}}({{order.contacts}})</text>
+				<text @click="callPhone(order.contactsMobile)" class="iconfont icon-weibiaoti-"></text>
+			</view>
+			<view class="tel">
+				<text>收货人:{{order.receiveMobile}}({{order.receiveUser}})</text>
+				<text @click="callPhone(order.receiveMobile)" class="iconfont icon-weibiaoti-"></text>
+			</view>
 		</view>
 		<view class="btn">
 			<view @click="robOrder">立即抢单</view>
@@ -92,6 +100,12 @@
 							});
 						}
 					}
+				});
+			},
+			// 打电话
+			callPhone(tel){
+				uni.makePhoneCall({
+					phoneNumber: tel
 				});
 			}
 		}
@@ -194,9 +208,17 @@
 				padding: 10upx;
 			}
 
-			>view:nth-of-type(1),
-			>view:nth-of-type(2) {
+			>view:not(:last-child) {
 				border-bottom: 1px solid $border-color;
+			}
+			
+			.tel{
+				display: flex;
+				justify-content: space-between;
+				
+				>text:last-child{
+					color: $bg-color-orange;
+				}
 			}
 		}
 

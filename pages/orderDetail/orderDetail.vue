@@ -18,6 +18,8 @@
 			<view class="adress">
 				<view>出发地：{{orderInfo.startPlace}}</view>
 				<view>目的地：{{orderInfo.endPlace}}</view>
+				<view>发货人：{{orderInfo.contactsMobile}}({{orderInfo.contacts}})</view>
+				<view>收货人：{{orderInfo.receiveMobile}}({{orderInfo.receiveUser}})</view>
 			</view>
 			<view class="info">
 				<view>公里数：{{orderInfo.distance}}km</view>
